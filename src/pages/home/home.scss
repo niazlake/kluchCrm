@@ -1,3 +1,23 @@
 page-home {
-
+  .circle {
+    width: 100px;
+    height: 100px;
+    background:#b5b5b5;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin: 0 auto;
+    margin-top: $content-margin*2 !important;
+  }
+  .info-user{
+    text-align: center;
+    margin-top: $content-margin*2;
+  }
+  .user-name{
+    font-size: 16px;
+  }
+  .user-status{
+    font-size: 14px;
+    opacity: 0.7;
+  }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {Storage} from "@ionic/storage";
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,36 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  events: any = [
+    {
+      "header": "Позвонить",
+      "phone": "+7(999)123-78-78",
+      "time": "12:30"
+    },
+    {
+      "header": "Позвонить",
+      "phone": "+7(999)123-78-78",
+      "time": "12:30"
+    },
+    {
+      "header": "Позвонить",
+      "phone": "+7(999)123-78-78",
+      "time": "12:30"
+    },
+    {
+      "header": "Позвонить",
+      "phone": "+7(999)123-78-78",
+      "time": "12:30"
+    },
+  ];
 
+  constructor(public navCtrl: NavController, private storage: Storage) {
+    this.storage.get("TOKEN").then(
+      (data: any) => {
+        console.log(data)
+      }
+    )
   }
+
 
 }

@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Storage} from "@ionic/storage";
 
 /*
   Generated class for the ApiProvider provider.
@@ -10,8 +11,30 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiProvider {
 
-  constructor(public http: HttpClient) {
+  private url: string = 'http://95.213.191.218/';
+  token: any = "";
+
+  constructor(public http: HttpClient, private storage: Storage) {
     console.log('Hello ApiProvider Provider');
+    this.storage.get("TOKEN").then(
+      (data: any) => {
+        this.token = data;
+      }
+    )
+  }
+
+  authUser(phone: string, password: string) {
+
+    const dataUser = {
+      "phone": phone,
+      "password": password
+    };
+
+    return this.http.post(this.url + 'auth', dataUser)
+  }
+
+  getObjects() {
+    return this.http.get(this.url + "estates?token=" + this.token);
   }
 
 }

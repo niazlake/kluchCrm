@@ -11,6 +11,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from '../providers/api/api';
+import {KpiPage} from "../pages/kpi/kpi";
+import {AuthPage} from "../pages/auth/auth";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {IonicStorageModule} from "@ionic/storage";
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -18,11 +23,19 @@ import { ApiProvider } from '../providers/api/api';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AuthPage,
+    KpiPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '__intourdb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
+    HttpClientModule,
+    TextMaskModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -30,13 +43,16 @@ import { ApiProvider } from '../providers/api/api';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    KpiPage,
+    AuthPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiProvider
+    ApiProvider,
+    HttpClient
   ]
 })
 export class AppModule {}

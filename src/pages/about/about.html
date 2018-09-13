@@ -1,11 +1,25 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Обьекты
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <div *ngFor="let object of objects">
+    <h1></h1>
+    <div class="img-in">
+      <img src="https://takprosto.cc/wp-content/uploads/p/planirovka-malenkoy-kvartiry/1.jpg" alt="">
+    </div>
+    <p>Статус обьекта : {{object.status.name}}</p>
+    <p> Ответственный: {{object.addUser.name}}</p>
+    <p>Ответственный (Номер телефон): {{object.addUser.phone}}</p>
+    <p> Регион : {{object.region}}</p>
+    <p> Город : {{object.city}}</p>
+    <p> Район:{{object.district}}</p>
+    <p> Улица:{{object.street}}</p>
+    <p> Номер дома:{{object.homeNumber}}</p>
+    <p> Корпус:</p>
+  </div>
 </ion-content>
