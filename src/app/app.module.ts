@@ -16,6 +16,8 @@ import {AuthPage} from "../pages/auth/auth";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {IonicStorageModule} from "@ionic/storage";
 import { TextMaskModule } from 'angular2-text-mask';
+import * as elasticsearch from 'elasticsearch-browser';
+import { ElasticSeacrhProvider } from '../providers/elastic-seacrh/elastic-seacrh';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { TextMaskModule } from 'angular2-text-mask';
       driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
     HttpClientModule,
-    TextMaskModule
+    TextMaskModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +54,9 @@ import { TextMaskModule } from 'angular2-text-mask';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider,
-    HttpClient
+    HttpClient,
+    ElasticSeacrhProvider,
+
   ]
 })
 export class AppModule {}

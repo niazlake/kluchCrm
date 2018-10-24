@@ -33,8 +33,10 @@ export class ApiProvider {
     return this.http.post(this.url + 'auth', dataUser)
   }
 
-  getObjects() {
-    return this.http.get(this.url + "estates?token=" + this.token);
+
+  paginationIndex(page, size) {
+    return this.http.get('http://95.213.191.218:5000/api/objects/page/' + page + '?size=' + size);
   }
+
 
 }
