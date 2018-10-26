@@ -2,22 +2,43 @@ page-home {
   .circle {
     width: 100px;
     height: 100px;
-    background:#b5b5b5;
+    background: #b5b5b5;
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
     margin: 0 auto;
     margin-top: $content-margin*2 !important;
   }
-  .info-user{
+  .info-user {
     text-align: center;
     margin-top: $content-margin*2;
   }
-  .user-name{
+  .user-name {
     font-size: 16px;
   }
-  .user-status{
+  .user-status {
     font-size: 14px;
     opacity: 0.7;
+  }
+  .form-phone {
+    display: inline-block;
+    margin: 16px;
+  }
+  .input-phone {
+    border: #b5b5b5 1px solid;
+    height: 42px;
+    padding: 8px;
+    width: 140px;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+  .input-search-phone {
+    margin: 16px;
+    width: 90%;
+    display: grid;
+  }
+  .address {
+    overflow-x: scroll;
+    text-overflow: clip;
   }
 }

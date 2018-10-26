@@ -11,18 +11,34 @@
     <p class="user-name">Имя Фамилия</p>
     <p class="user-status">Должность</p>
   </div>
+
+  <form class="form-phone-input" (submit)="getHistory($event)">
+
+    <div class="input-search-phone">
+      <input type="tel" class="input-phone" [textMask]="{mask: mask, placeholderChar: '\u2000'}"
+             placeholder="7-(777)-777-77-77">
+      <button ion-button class="search-button"> Найти</button>
+    </div>
+
+  </form>
+
+
   <div class="user-active">
-    <ion-card *ngFor="let item of events">
-      <ion-card-header>
-        {{item.header}}
+    <ion-card *ngFor="let item of historyClients">
+      <ion-card-header class="address">
+        {{item.objectInfo.address}}
       </ion-card-header>
       <ion-card-content>
         <p>
-          Телефон номер клиента :
-          <br>{{item.phone}}
+          Имя клиента: <br>
+          {{item.clientName}}
         </p>
         <p>
-          Время: {{item.time}}
+          Телефон номер клиента :
+          <br> <a href="tel:'{{item.clientPhone}}'">{{item.clientPhone}}</a>
+        </p>
+        <p>
+          Время: {{item.time | date:'medium'}}
         </p>
       </ion-card-content>
     </ion-card>

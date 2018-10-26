@@ -38,5 +38,9 @@ export class ApiProvider {
     return this.http.get('http://95.213.191.218:5000/api/objects/page/' + page + '?size=' + size);
   }
 
+  getHistoryPhone(phone: string) {
+    return this.http.get('http://95.213.191.218:5000/api/history?phone=%2B' + phone);
+  }
+
 
 }
