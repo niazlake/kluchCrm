@@ -10,6 +10,8 @@ import {ElasticSeacrhProvider} from "../../providers/elastic-seacrh/elastic-seac
 })
 export class AboutPage {
 
+  public counter: number = 0;
+
   objects: any = [];
   myInput = '';
   search = [];
@@ -39,7 +41,8 @@ export class AboutPage {
     console.log('Begin async operation');
 
     setTimeout(() => {
-
+      this.counter += 1;
+      console.log(this.counter);
       console.log('Async operation has ended');
       infiniteScroll.complete();
     }, 500);

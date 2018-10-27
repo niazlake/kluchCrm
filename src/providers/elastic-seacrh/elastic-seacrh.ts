@@ -17,6 +17,28 @@ export class ElasticSeacrhProvider {
     console.log('Hello ElasticSeacrhProvider Provider');
   }
 
+  getSearchCall(q: string): PromiseLike<any> {
+    const clientIn = elasticsearch.Client({
+      host: 'http://95.213.191.218:9200/',
+      log: 'trace'
+    });
+    return clientIn.search({
+      body: {
+
+        'query': {
+          'bool': {
+            'must': [
+              {
+                'match': {
+                  'clients': q
+                }
+              }
+            ]
+          }
+        }
+      }
+    })
+  }
 
 
   getSearchResults(q: string): PromiseLike<any> {

@@ -13,6 +13,8 @@
     (ionInput)="onInput($event)"
     (ionCancel)="onCancel($event)">
   </ion-searchbar>
+  <button ion-button>Мои обьекты</button>
+  <button ion-button>Эксклюзивные</button>
 
   <div *ngIf="!searchStatus">
     <div *ngFor="let object of objects" class="houses-inline">
