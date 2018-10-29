@@ -1,12 +1,33 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Клиенты
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
+  <div *ngIf="search[0]">
+    <ion-card *ngFor="let item of search[0].hits.hits">
+
+      <ion-card-header>
+        <div class="clientName">Имя клиента :
+          <div class="name">{{item._source.clientName}}</div>
+        </div>
+        <div class="clientPhone">Номер клиента : <a
+          href="tel:{{item._source.clientPhone}}">{{item._source.clientPhone}}</a></div>
+        <hr>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="address">
+          Адресс обьекта : {{item._source.objectInfo.Address}}
+        </div>
+        <div class="price"> Цена : {{item._source.objectInfo.price}} руб.</div>
+        <div class="comment"> Комментарий: {{item._source.comment}}</div>
+      </ion-card-content>
+
+    </ion-card>
+  </div>
 
 </ion-content>

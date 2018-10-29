@@ -1,3 +1,24 @@
 page-contact {
-
+  .clientName {
+    font-size: 16px;
+    display: inline-block;
+  }
+  .name {
+    text-transform: uppercase;
+    display: inline-block;
+  }
+  .clientPhone {
+    margin: $content-margin 0;
+  }
+  .address {
+    font-size: 14px;
+  }
+  .price {
+    font-size: 14px;
+    margin: $content-margin 0;
+  }
+  .comment {
+    font-size: 14px;
+    margin: $content-margin 0;
+  }
 }

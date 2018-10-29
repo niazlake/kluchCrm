@@ -24,16 +24,9 @@ export class ElasticSeacrhProvider {
     });
     return clientIn.search({
       body: {
-
-        'query': {
-          'bool': {
-            'must': [
-              {
-                'match': {
-                  'clients': q
-                }
-              }
-            ]
+        "query": {
+          "match": {
+            "objectInfo.sellerName": "Тараканова Эльвира Владимировна"
           }
         }
       }

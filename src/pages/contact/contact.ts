@@ -12,17 +12,6 @@ export class ContactPage {
 
   constructor(public  elastic: ElasticSeacrhProvider, public navCtrl: NavController) {
 
-  }
-
-  extractData(data) {
-    this.search = [];
-    this.search.push(data);
-
-    console.log(this.search[0].hits, 'here search')
-  }
-
-  onInput(e) {
-    console.log(this.myInput);
     this.elastic.getSearchCall(this.myInput).then(
       data => {
         this.extractData(data);
@@ -30,5 +19,13 @@ export class ContactPage {
       }
     )
   }
+
+  extractData(data) {
+    this.search = [];
+    this.search.push(data);
+
+    console.log(this.search[0], 'here search')
+  }
+
 
 }
