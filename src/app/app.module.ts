@@ -22,6 +22,7 @@ import {registerLocaleData} from '@angular/common';
 import {ElasticSeacrhProvider} from '../providers/elastic-seacrh/elastic-seacrh';
 import {ConvertProvider} from '../providers/convert/convert';
 import localeRu from '@angular/common/locales/ru';
+import {PotentialClientPage} from "../pages/potential-client/potential-client";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -34,7 +35,8 @@ registerLocaleData(localeRu, 'ru');
     HomePage,
     TabsPage,
     AuthPage,
-    KpiPage
+    KpiPage,
+    PotentialClientPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ registerLocaleData(localeRu, 'ru');
     HomePage,
     TabsPage,
     KpiPage,
-    AuthPage
+    AuthPage,
+    PotentialClientPage
   ],
   providers: [
     StatusBar,

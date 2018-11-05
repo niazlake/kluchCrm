@@ -26,13 +26,29 @@ export class ElasticSeacrhProvider {
       body: {
         "query": {
           "match": {
-            "objectInfo.sellerName": "Тараканова Эльвира Владимировна"
+            "objectInfo.sellerName": "Немаев Булат Мансурович"
           }
         }
       }
     })
   }
 
+
+  getAddresCall(q: string): PromiseLike<any> {
+    const clientIn = elasticsearch.Client({
+      host: 'http://95.213.191.218:9200/',
+      log: 'trace'
+    });
+    return clientIn.search({
+      body: {
+        "query": {
+          "match": {
+            "objectInfo.Address": q
+          }
+        }
+      }
+    })
+  }
 
   getSearchResults(q: string): PromiseLike<any> {
     return this.query(q)
@@ -47,7 +63,13 @@ export class ElasticSeacrhProvider {
     });
 
     return client.search({
-      q: q
+      body: {
+        "query": {
+          "match": {
+            "Address": q
+          }
+        }
+      }
     }).then(body => {
       return body.hits;
     });

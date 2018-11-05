@@ -28,17 +28,24 @@ page-home {
     border: #b5b5b5 1px solid;
     height: 42px;
     padding: 8px;
-    width: 140px;
-    margin: 0 auto;
+    width: 150px;
     border-radius: 8px;
+    margin: 0 auto;
   }
   .input-search-phone {
     margin: 16px;
     width: 90%;
-    display: grid;
+    display: inline-grid;
   }
   .address {
     overflow-x: scroll;
     text-overflow: clip;
+  }
+  .search-button {
+    background: #00A8FF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin: 0 auto;
+    width: 160px;
   }
 }

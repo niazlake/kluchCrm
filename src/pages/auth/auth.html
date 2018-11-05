@@ -4,63 +4,59 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>auth</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
-  <div class="center-inline">
-    <ion-list>
-      <form novalidate [formGroup]="signupform">
-        <ion-item>
-          <input [textMask]="{mask: mask, placeholderChar: '\u2000'}"
-                     type="text" [(ngModel)]="userData.username"
-                     formControlName="username"
-                      class="input-display"
-                      placeholder="8(999)111-11-11"
-                     [class.error1]="!signupform.controls.username.valid && signupform.controls.username.dirty">
-        </ion-item>
+  <div class="Absolute-Center">
+    <div class="Center-Container">
+      <div class="center-img">
+        <ion-img width="80" height="80" src="../assets/imgs/main.png"></ion-img>
+      </div>
+      <h1 class="main-text">Войти в аккаунт</h1>
+      <ion-list>
+        <form novalidate [formGroup]="signupform">
+          <ion-item>
+            <input [textMask]="{mask: mask, placeholderChar: '\u2000'}"
+                   type="text" [(ngModel)]="userData.username"
+                   formControlName="username"
+                   class="input-display"
+                   placeholder="8(999)111-11-11"
+                   [class.error1]="!signupform.controls.username.valid && signupform.controls.username.dirty">
+          </ion-item>
 
-        <ion-item no-lines
-                  *ngIf="( signupform.get('username').hasError('minlength') || signupform.get('username').hasError('maxlength') ||signupform.get('username').hasError('pattern') ||signupform.get('username').hasError('required') ) && signupform.get('username').touched">
-          <div class="error"
-               *ngIf="signupform.get('username').hasError('required') && signupform.get('username').touched">
-            Пожалуйста введите логин
-          </div>
-          <div class="error"
-               *ngIf="signupform.get('username').hasError('minlength') && signupform.get('username').touched">
-            Минимум 4 букв
-          </div>
-          <div class="error"
-               *ngIf="signupform.get('username').hasError('pattern') && signupform.get('username').touched">
-            Используйте английские буквы
-          </div>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Пароль</ion-label>
-          <ion-input type="password" [(ngModel)]="userData.password" formControlName="password"
-                     [class.error1]="!signupform.controls.password.valid && signupform.controls.password.dirty"></ion-input>
-        </ion-item>
+          <ion-item no-lines
+                    *ngIf="( signupform.get('username').hasError('minlength') || signupform.get('username').hasError('maxlength') ||signupform.get('username').hasError('pattern') ||signupform.get('username').hasError('required') ) && signupform.get('username').touched">
+            <div class="error"
+                 *ngIf="signupform.get('username').hasError('required') && signupform.get('username').touched">
+              Пожалуйста введите логин
+            </div>
+            <div class="error"
+                 *ngIf="signupform.get('username').hasError('minlength') && signupform.get('username').touched">
+              Минимум 4 букв
+            </div>
+            <div class="error"
+                 *ngIf="signupform.get('username').hasError('pattern') && signupform.get('username').touched">
+              Используйте английские буквы
+            </div>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Пароль</ion-label>
+            <ion-input type="password" [(ngModel)]="userData.password" formControlName="password"
+                       [class.error1]="!signupform.controls.password.valid && signupform.controls.password.dirty"></ion-input>
+          </ion-item>
 
-        <ion-item no-lines
-                  *ngIf="( signupform.get('password').hasError('minlength') || signupform.get('password').hasError('maxlength') ||signupform.get('password').hasError('required') ) && signupform.get('password').touched">
-          <div class="error"
-               *ngIf="signupform.get('password').hasError('required') && signupform.get('password').touched">
-            Пожалуйста введите пароль
-          </div>
-          <div class="error"
-               *ngIf="signupform.get('password').hasError('minlength') && signupform.get('password').touched">
-            Минимум 6 букв
-          </div>
-        </ion-item>
-      </form>
-    </ion-list>
-    <button ion-button block color="mainse" [disabled]="signupform.invalid" (click)="auth()">ВОЙТИ</button>
-    <button ion-button block color="mainse" (click)="goReverse()">ВОССТАНОВИТЬ ПАРОЛЬ</button>
+          <ion-item no-lines
+                    *ngIf="( signupform.get('password').hasError('minlength') || signupform.get('password').hasError('maxlength') ||signupform.get('password').hasError('required') ) && signupform.get('password').touched">
+            <div class="error"
+                 *ngIf="signupform.get('password').hasError('required') && signupform.get('password').touched">
+              Пожалуйста введите пароль
+            </div>
+            <div class="error"
+                 *ngIf="signupform.get('password').hasError('minlength') && signupform.get('password').touched">
+              Минимум 6 букв
+            </div>
+          </ion-item>
+        </form>
+      </ion-list>
+      <button ion-button block color="mainse" [disabled]="signupform.invalid" (click)="auth()">ВОЙТИ</button>
+    </div>
   </div>
 </ion-content>

@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {ApiProvider} from "../../providers/api/api";
 import {ObjectCudPage} from "../object-cud/object-cud";
 import {ElasticSeacrhProvider} from "../../providers/elastic-seacrh/elastic-seacrh";
+import {PotentialClientPage} from "../potential-client/potential-client";
 
 @Component({
   selector: 'page-about',
@@ -63,6 +64,13 @@ export class AboutPage {
         this.extractData(res);
       }
     )
+  }
+
+  goPotential(address) {
+    const data = {
+      adress: address
+    };
+    this.navCtrl.push(PotentialClientPage, data);
   }
 
 

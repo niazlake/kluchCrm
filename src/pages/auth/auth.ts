@@ -21,7 +21,7 @@ export class AuthPage {
   signupform: FormGroup;
   userData = {"username": "", "password": ""};
   public mask: any[] = ['+', '7', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
-
+  image_main = "../asset";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private api: ApiProvider, private storage: Storage) {
   }

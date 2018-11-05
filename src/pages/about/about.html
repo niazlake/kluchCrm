@@ -14,7 +14,7 @@
     (ionCancel)="onCancel($event)">
   </ion-searchbar>
   <button ion-button>Мои обьекты</button>
-  <button ion-button>Эксклюзивные</button>
+  <button ion-button>Все объекты</button>
 
   <div *ngIf="!searchStatus">
     <div *ngFor="let object of objects" class="houses-inline">
@@ -46,8 +46,12 @@
           <div class="remont">Телефон(отв):</div>
           <div class="remont-type"><a href="">{{object.sellerPhone}}</a></div>
         </div>
+        <div class="remont-style">
+          <button style="font-size: 12px; text-transform: initial" (click)="goPotential(object.address)" ion-button>
+            Потенциальные клиенты
+          </button>
+        </div>￼
       </div>
-
     </div>
   </div>
 
@@ -70,7 +74,7 @@
         </div>
 
         <div class="text-area">
-          <h1 class="header-area">{{object._source.address}}
+          <h1 class="header-area">{{object._source.Address}}
           </h1>
           <div class="remont-style">
             <div class="remont">Цена:</div>
@@ -83,6 +87,12 @@
           <div class="remont-style">
             <div class="remont">Телефон(отв):</div>
             <div class="remont-type"><a href="">{{object._source.sellerPhone}}</a></div>
+          </div>
+          <div class="remont-style">
+            <button style="font-size: 12px; text-transform: initial" (click)="goPotential(object._source.Address)"
+                    ion-button>
+              Потенциальные клиенты
+            </button>
           </div>
         </div>
 
