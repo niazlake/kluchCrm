@@ -3,62 +3,42 @@ import {NavController} from 'ionic-angular';
 import {Storage} from "@ionic/storage";
 import {ApiProvider} from "../../providers/api/api";
 import {ConvertProvider} from "../../providers/convert/convert";
+import {ElasticSeacrhProvider} from "../../providers/elastic-seacrh/elastic-seacrh";
+import {CallNumber} from '@ionic-native/call-number';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  mask: any[] = ['7', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
+  calls = [];
 
-  historyClients: any = [];
-
-  events: any = [
-    {
-      "header": "Позвонить",
-      "phone": "+7(999)123-78-78",
-      "time": "12:30"
-    },
-    {
-      "header": "Позвонить",
-      "phone": "+7(999)123-78-78",
-      "time": "12:30"
-    },
-    {
-      "header": "Позвонить",
-      "phone": "+7(999)123-78-78",
-      "time": "12:30"
-    },
-    {
-      "header": "Позвонить",
-      "phone": "+7(999)123-78-78",
-      "time": "12:30"
-    },
-  ];
-
-  constructor(public convert: ConvertProvider, public api: ApiProvider, private storage: Storage) {
+  constructor(private storage: Storage, private elastic: ElasticSeacrhProvider, private callNumber: CallNumber) {
     this.storage.get("TOKEN").then(
       (data: any) => {
         console.log(data)
       }
+    );
+
+    this.elastic.getSearchCall('не я').then(
+      data => {
+        this.extractData(data.hits.hits);
+
+      }
     )
   }
 
-  getHistory(e) {
+  extractData(data) {
+    this.calls = [];
+    this.calls.push(data);
 
-    const clientPhone = this.convert.convertPhone(e.target.elements[0].value);
-    console.log(clientPhone);
-
-    this.api.getHistoryPhone(clientPhone).subscribe(
-      data => {
-        this.historyClients = data;
-        console.log(data);
-      },
-      error1 => {
-        console.log(error1);
-      }
-    );
+    console.log(this.calls, 'here search')
   }
 
-
+  call(phone) {
+    console.log(phone)
+    this.callNumber.callNumber(phone, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
 }

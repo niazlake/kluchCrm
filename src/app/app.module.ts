@@ -23,6 +23,7 @@ import {ElasticSeacrhProvider} from '../providers/elastic-seacrh/elastic-seacrh'
 import {ConvertProvider} from '../providers/convert/convert';
 import localeRu from '@angular/common/locales/ru';
 import {PotentialClientPage} from "../pages/potential-client/potential-client";
+import {CallNumber} from '@ionic-native/call-number';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -67,6 +68,7 @@ registerLocaleData(localeRu, 'ru');
     HttpClient,
     ElasticSeacrhProvider,
     ConvertProvider,
+    CallNumber,
     {provide: LOCALE_ID, useValue: 'ru'}
 
 

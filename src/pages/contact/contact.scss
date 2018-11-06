@@ -1,24 +1,51 @@
 page-contact {
-  .clientName {
+  .circle {
+    width: 100px;
+    height: 100px;
+    background: #b5b5b5;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin: 0 auto;
+    margin-top: $content-margin*2 !important;
+  }
+  .info-user {
+    text-align: center;
+    margin-top: $content-margin*2;
+  }
+  .user-name {
     font-size: 16px;
-    display: inline-block;
   }
-  .name {
-    text-transform: uppercase;
-    display: inline-block;
+  .user-status {
+    font-size: 14px;
+    opacity: 0.7;
   }
-  .clientPhone {
-    margin: $content-margin 0;
+  .form-phone {
+    display: inline-block;
+    margin: 16px;
+  }
+  .input-phone {
+    border: #b5b5b5 1px solid;
+    height: 42px;
+    padding: 8px;
+    width: 150px;
+    border-radius: 8px;
+    margin: 0 auto;
+  }
+  .input-search-phone {
+    margin: 16px;
+    width: 90%;
+    display: inline-grid;
   }
   .address {
-    font-size: 14px;
+    overflow-x: scroll;
+    text-overflow: clip;
   }
-  .price {
-    font-size: 14px;
-    margin: $content-margin 0;
-  }
-  .comment {
-    font-size: 14px;
-    margin: $content-margin 0;
+  .search-button {
+    background: #00A8FF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    margin: 0 auto;
+    width: 160px;
   }
 }

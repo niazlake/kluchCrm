@@ -4,44 +4,25 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div class="circle">
-  </div>
-  <div class="info-user">
-    <p class="user-name">Немаев Булат Мансурович</p>
-    <p class="user-status">специалист по недвижимости</p>
-  </div>
-
-  <form class="form-phone-input" (submit)="getHistory($event)">
-    <div class="input-search-phone">
-      <input type="tel" class="input-phone" [textMask]="{mask: mask, placeholderChar: '\u2000'}"
-             placeholder="7-(777)-777-77-77">
-      <div style="margin-top: 16px;"></div>
-      <button ion-button color="mainse" class="search-button"> Найти</button>
+<ion-content style="background-color: #F9FBFF" no-padding>
+  <div class="inline-profile">
+    <div class="circle">
     </div>
-
-  </form>
-
-
-  <div class="user-active">
-    <ion-card *ngFor="let item of historyClients">
-      <ion-card-header class="address">
-        {{item.objectInfo.address}}
-      </ion-card-header>
-      <ion-card-content>
-        <p>
-          Имя клиента: <br>
-          {{item.clientName}}
-        </p>
-        <p>
-          Телефон номер клиента :
-          <br> <a href="tel:'{{item.clientPhone}}'">{{item.clientPhone}}</a>
-        </p>
-        <p>
-          Время: {{item.time | date:'medium'}}
-        </p>
-      </ion-card-content>
-    </ion-card>
+    <div class="info-user">
+      <p no-margin class="user-name">Немаев Булат Мансурович</p>
+      <p no-margin class="user-status">специалист по недвижимости</p>
+    </div>
   </div>
-
+  <div *ngFor="let item of calls[0]" class="card-human">
+    <div class="main-info">
+      <div class="circle-small"></div>
+      <div class="info-block">
+        Позвонить клиенту <span style="text-transform: uppercase">{{item._source.clientName}}</span>
+      </div>
+      <div class="clientPhone" (click)="call(item._source.clientPhone)">
+        {{item._source.clientPhone}}
+      </div>
+      <span class="clientPhone">          Время: {{item._source.time | date:'medium'}}</span>
+    </div>
+  </div>
 </ion-content>

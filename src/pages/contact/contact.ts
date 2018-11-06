@@ -1,31 +1,34 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ElasticSeacrhProvider} from "../../providers/elastic-seacrh/elastic-seacrh";
+import {ApiProvider} from "../../providers/api/api";
+import {ConvertProvider} from "../../providers/convert/convert";
 
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-  myInput = '';
-  search = [];
+  historyClients: any = [];
+  mask: any[] = ['7', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
 
-  constructor(public  elastic: ElasticSeacrhProvider, public navCtrl: NavController) {
+  constructor(public convert: ConvertProvider, public api: ApiProvider) {
+  }
 
-    this.elastic.getSearchCall(this.myInput).then(
+  getHistory(e) {
+
+    const clientPhone = this.convert.convertPhone(e.target.elements[0].value);
+    console.log(clientPhone);
+
+    this.api.getHistoryPhone(clientPhone).subscribe(
       data => {
-        this.extractData(data);
-
+        this.historyClients = data;
+        console.log(data);
+      },
+      error1 => {
+        console.log(error1);
       }
-    )
+    );
   }
-
-  extractData(data) {
-    this.search = [];
-    this.search.push(data);
-
-    console.log(this.search[0], 'here search')
-  }
-
 
 }

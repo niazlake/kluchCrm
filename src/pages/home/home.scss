@@ -1,24 +1,30 @@
 page-home {
   .circle {
-    width: 100px;
-    height: 100px;
+    width: 65px;
+    height: 65px;
     background: #b5b5b5;
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
     margin: 0 auto;
     margin-top: $content-margin*2 !important;
+    display: inline-block;
   }
   .info-user {
     text-align: center;
     margin-top: $content-margin*2;
+    display: inline-block;
+    vertical-align: top;
   }
   .user-name {
-    font-size: 16px;
+    font-size: 24px;
+    width: 200px;
   }
   .user-status {
-    font-size: 14px;
-    opacity: 0.7;
+    line-height: 19px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+
   }
   .form-phone {
     display: inline-block;
@@ -47,5 +53,40 @@ page-home {
     border-radius: 4px;
     margin: 0 auto;
     width: 160px;
+  }
+  .inline-profile {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  .card-human {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    min-width: 280px;
+    height: 90px;
+    margin: 16px;
+  }
+  .circle-small {
+    height: 6px;
+    width: 6px;
+    background-color: #F68A6D;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .main-info {
+    padding: 24px;
+    vertical-align: middle;
+  }
+  .info-block {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 16px;
+  }
+  .clientPhone {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #7B7C7E;
   }
 }
