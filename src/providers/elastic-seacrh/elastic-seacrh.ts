@@ -59,7 +59,7 @@ export class ElasticSeacrhProvider {
       body: {
         "query": {
           "match": {
-            "Address": q
+            "objectInfo.sellerName": q
           }
         }
       }

@@ -7,98 +7,47 @@
 </ion-header>
 
 <ion-content padding class="content-back">
-  <ion-searchbar
-    [(ngModel)]="myInput"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="onInput($event)"
-    (ionCancel)="onCancel($event)">
-  </ion-searchbar>
   <button ion-button>Мои обьекты</button>
-  <button ion-button>Все объекты</button>
+  <div *ngFor="let object of search[0]" class="houses-inline">
 
-  <div *ngIf="!searchStatus">
-    <div *ngFor="let object of objects" class="houses-inline">
+    <div class="img-in">
+      <ion-slides *ngIf="object._source.images && object._source.images.length" autoplay="1500" speed="800"
+                  paginationType="fraction"
+                  loop="true"
+                  parallax="true">
+        <ion-slide *ngFor="let imgUrl of object._source.images">
+          <img [src]="imgUrl" alt="">
+        </ion-slide>
+      </ion-slides>
 
-      <div class="img-in">
 
-        <ion-slides *ngIf="object.images && object.images.length" autoplay="1500" speed="800" paginationType="fraction"
-                    loop="true"
-                    parallax="true">
-          <ion-slide *ngFor="let imgUrl of object.images">
-            <img [src]="imgUrl" alt="">
-          </ion-slide>
-        </ion-slides>
+    </div>
 
+    <div class="text-area">
+      <h1 class="header-area">{{object._source.objectInfo.Address}}
+      </h1>
+      <div class="remont-style">
+        <div class="remont">Цена:</div>
+        <div class="remont-type">{{object._source.objectInfo.price}}</div>
       </div>
-
-      <div class="text-area">
-        <h1 class="header-area">{{object.address}}
-        </h1>
-        <div class="remont-style">
-          <div class="remont">Цена:</div>
-          <div class="remont-type">{{object.price}}</div>
-        </div>
-        <div class="remont-style">
-          <div class="remont">Ответсвенный:</div>
-          <div class="remont-type">{{object.sellerName}}</div>
-        </div>
-        <div class="remont-style">
-          <div class="remont">Телефон(отв):</div>
-          <div class="remont-type"><a href="">{{object.sellerPhone}}</a></div>
-        </div>
-        <div class="remont-style">
-          <button style="font-size: 12px; text-transform: initial" (click)="goPotential(object.address)" ion-button>
-            Потенциальные клиенты
-          </button>
-        </div>￼
+      <div class="remont-style">
+        <div class="remont">Ответсвенный:</div>
+        <div class="remont-type">{{object._source.objectInfo.sellerName}}</div>
+      </div>
+      <div class="remont-style">
+        <div class="remont">Телефон(отв):</div>
+        <div class="remont-type"><a href="">{{object._source.objectInfo.sellerPhone}}</a></div>
+      </div>
+      <div class="remont-style">
+        <button style="font-size: 12px; text-transform: initial"
+                (click)="goPotential(object._source.objectInfo.Address)"
+                ion-button>
+          Потенциальные клиенты
+        </button>
       </div>
     </div>
-  </div>
 
-
-  <div *ngIf="searchStatus">
-    <div *ngIf="search">
-      <div *ngFor="let object of search[0].hits" class="houses-inline">
-
-        <div class="img-in">
-
-          <ion-slides *ngIf="object._source.images && object._source.images.length" autoplay="1500" speed="800"
-                      paginationType="fraction"
-                      loop="true"
-                      parallax="true">
-            <ion-slide *ngFor="let imgUrl of object._source.images">
-              <img [src]="imgUrl" alt="">
-            </ion-slide>
-          </ion-slides>
-
-        </div>
-
-        <div class="text-area">
-          <h1 class="header-area">{{object._source.Address}}
-          </h1>
-          <div class="remont-style">
-            <div class="remont">Цена:</div>
-            <div class="remont-type">{{object._source.price}}</div>
-          </div>
-          <div class="remont-style">
-            <div class="remont">Ответсвенный:</div>
-            <div class="remont-type">{{object._source.sellerName}}</div>
-          </div>
-          <div class="remont-style">
-            <div class="remont">Телефон(отв):</div>
-            <div class="remont-type"><a href="">{{object._source.sellerPhone}}</a></div>
-          </div>
-          <div class="remont-style">
-            <button style="font-size: 12px; text-transform: initial" (click)="goPotential(object._source.Address)"
-                    ion-button>
-              Потенциальные клиенты
-            </button>
-          </div>
-        </div>
-
-        <hr/>
-      </div>
-    </div>
+    <hr/>
   </div>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

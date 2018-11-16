@@ -19,20 +19,13 @@ export class AboutPage {
   searchStatus = false;
 
   constructor(public navCtrl: NavController, private api: ApiProvider, private elastic: ElasticSeacrhProvider) {
-    this.getObjects(1, 10);
-  }
-
-  getObjects(page, size) {
-    this.api.paginationIndex(page, size).subscribe(
-      data => {
-        this.objects = data;
-        console.log(data);
-      },
-      error1 => {
-        console.log('didnt get console');
+    this.searchStatus = true;
+    this.elastic.getSearchResults('Сараев Сергей').then(
+      res => {
+        this.extractData(res.hits);
       }
-    );
-  };
+    )
+  }
 
   goCud() {
     this.navCtrl.push(ObjectCudPage);
@@ -52,18 +45,6 @@ export class AboutPage {
   extractData(data) {
     this.search = [];
     this.search.push(data);
-
-    console.log(this.search[0].hits, 'here search')
-  }
-
-
-  onInput(event) {
-    this.searchStatus = true;
-    this.elastic.getSearchResults(this.myInput).then(
-      res => {
-        this.extractData(res);
-      }
-    )
   }
 
   goPotential(address) {
